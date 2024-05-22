@@ -6,7 +6,7 @@ const Pagination = ({ total, onChange }) => {
   const pagesCount = Math.ceil(total / 10);
   let pages = [...Array(pagesCount).keys().map(x => x += 1)];
   if (pagesCount > 20) {
-    pages = pages.slice(currentPage - 5 > 1 ? currentPage - 5 : 1, currentPage + 5);
+    pages = pages.slice(currentPage - 5 > 0 ? currentPage - 5 : 0, currentPage + 5);
   }
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
