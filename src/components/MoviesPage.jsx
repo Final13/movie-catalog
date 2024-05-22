@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import SearchResults from "./SearchResults";
+import Movies from "./Movies";
 
 const MoviesPage = () => {
   const [user, setUser] = useState({});
@@ -18,6 +19,7 @@ const MoviesPage = () => {
       .then(res => res.json())
       .then(res => {
         Array.isArray(res.Search) ? setMovies(res.Search): setMovies([res]);
+        if (res.Error) setMovies([]);
         setTotal(res.totalResults || undefined);
       });
   }, [search])
@@ -30,6 +32,7 @@ const MoviesPage = () => {
     <>
       <Header siteName={siteName} user={user} onChange={handleChangeSearch} />
       <SearchResults total={total} search={search} />
+      <Movies movies={movies} />
     </>
   );
 };
