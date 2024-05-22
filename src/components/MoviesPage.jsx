@@ -11,6 +11,7 @@ const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [total, setTotal] = useState(undefined);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   useEffect(() => {
     fetch('https://dummyjson.com/users/1')
       .then(res => res.json())
@@ -21,7 +22,11 @@ const MoviesPage = () => {
       .then(res => res.json())
       .then(res => {
         Array.isArray(res.Search) ? setMovies(res.Search) : setMovies([res]);
-        if (res.Error) setMovies([]);
+        setError('');
+        if (res.Error) {
+          setMovies([]);
+          setError(res.Error);
+        }
         setTotal(res.totalResults || undefined);
         setLoading(false);
       });
@@ -29,16 +34,14 @@ const MoviesPage = () => {
 
   const siteName = 'Movie Catalog';
   const handleChangeSearch = (event) => {
-    if (event.target.value.length > 2) {
-      setLoading(true);
-      setSearch(event.target.value);
-    }
+    setLoading(true);
+    setSearch(event.target.value);
   }
   return (
     <>
       <Header siteName={siteName} user={user} onChange={handleChangeSearch} />
       <SearchResults total={total} search={search} />
-      <Movies movies={movies} loading={loading} />
+      <Movies movies={movies} loading={loading} error={error} />
       <Pagination
         total={total}
         onChange={val => {

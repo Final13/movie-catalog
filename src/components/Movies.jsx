@@ -1,6 +1,7 @@
 import React from "react";
 
-const Movies = ({ movies = [], loading = false }) => {
+const Movies = ({ movies = [], loading = false, error = '' }) => {
+  if (error) return <div style={{ fontSize: 100 }}>{error}</div>;
   if (loading) return <div style={{ fontSize: 100 }}>Loading</div>;
   if (!movies.length) return <div style={{ fontSize: 100 }}>Not results found</div>;
   return (
