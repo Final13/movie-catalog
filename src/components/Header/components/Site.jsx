@@ -1,9 +1,9 @@
 import React from "react";
 
-const Site = () => {
+const Site = ({ siteName = '' }) => {
   return (
-    <div style={{ minWidth: 300 }}>
-      Site
+    <div style={{ minWidth: 300, fontSize: 30, fontWeight: 500 }}>
+      {siteName}
     </div>
   );
 };

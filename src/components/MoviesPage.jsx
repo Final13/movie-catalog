@@ -8,9 +8,10 @@ const MoviesPage = () => {
       .then(res => res.json())
       .then(res => setUser(res));
   })
+  const siteName = 'Movie Catalog';
   return (
     <>
-      <Header user={user} />
+      <Header siteName={siteName} user={user} />
       <div>
         Movies
       </div>
