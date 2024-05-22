@@ -1,7 +1,8 @@
 import React from "react";
 
-const Movies = ({ movies = [] }) => {
-  if (!movies.length) return <div style={{ fontSize: 50 }}>Not results found</div>;
+const Movies = ({ movies = [], loading = false }) => {
+  if (loading) return <div style={{ fontSize: 100 }}>Loading</div>;
+  if (!movies.length) return <div style={{ fontSize: 100 }}>Not results found</div>;
   return (
     <div
       style={{
