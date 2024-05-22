@@ -3,7 +3,7 @@ import Site from "./components/Site";
 import Search from "./components/Search";
 import User from "./components/User";
 
-const Header = ({  }) => {
+const Header = ({ user }) => {
   return (
     <div
       style={{
@@ -17,7 +17,7 @@ const Header = ({  }) => {
     >
       <Site />
       <Search />
-      <User />
+      <User user={user} />
     </div>
   );
 };
