@@ -3,7 +3,7 @@ import Site from "./components/Site";
 import Search from "./components/Search";
 import User from "./components/User";
 
-const Header = ({ user, siteName }) => {
+const Header = ({ user, siteName, onChange }) => {
   return (
     <div
       style={{
@@ -16,7 +16,7 @@ const Header = ({ user, siteName }) => {
       }}
     >
       <Site siteName={siteName} />
-      <Search />
+      <Search onChange={onChange} />
       <User user={user} />
     </div>
   );

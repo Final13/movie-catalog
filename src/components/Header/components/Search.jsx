@@ -1,9 +1,9 @@
 import React from "react";
 
-const Search = () => {
+const Search = ({ onChange }) => {
   return (
     <div style={{ width: '100%' }}>
-      Search
+      <input onChange={onChange} placeholder="Search" />
     </div>
   );
 };
